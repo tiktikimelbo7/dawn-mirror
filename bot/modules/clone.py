@@ -60,10 +60,10 @@ def _clone(message, bot, multi=0):
         if res != "":
             return sendMessage(res, bot, message)
         if STOP_DUPLICATE:
-            LOGGER.info('Checking File/Folder if already in Drive...')
+            LOGGER.info('Dude Checking File/Folder if already in Drive')
             smsg, button = gd.drive_list(name, True, True)
             if smsg:
-                msg3 = "Someone already mirrored it for you !\nHere you go:"
+                msg3 = "Dude Someone already mirrored it for you !\nHere you go:"
                 return sendMarkup(msg3, bot, message, button)
         if CLONE_LIMIT is not None:
             LOGGER.info('Checking File/Folder Size...')
@@ -102,7 +102,7 @@ def _clone(message, bot, multi=0):
                     update_all_messages()
             except IndexError:
                 pass
-        cc = f'\n\n<b>Hey </b>{tag}<b> Your Task is Done</b>\n\n<b>Thanks for using <i>@Z_Mirror</i></b>'
+        cc = f'\n\n<b> </b>{tag}<b> </b>\n\n<b> Every moment is a fresh beginning <i> File Saved In Dumb Files </i></b>'
         if button in ["cancelled", ""]:
             sendMessage(f"{tag} {result}", bot, message)
         else:
