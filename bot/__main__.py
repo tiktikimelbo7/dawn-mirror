@@ -68,7 +68,6 @@ def start(update, context):
     
     buttons.buildbutton("Co Developer", "https://t.me/KodalineMusic")
     buttons.buildbutton("Developer", "https://t.me/jackssmit")
-    buttons.buildbutton("OneTeam", "https://t.me/+FfAj9mmNrUo0Yzdl")
     buttons.buildbutton("Buy me Coffee ☕️", "https://www.buymeacoffee.com/jackssmit")
     
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
