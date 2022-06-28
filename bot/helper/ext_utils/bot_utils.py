@@ -381,7 +381,7 @@ Disk  {total} - Left {free}
 Used  [{disk}%] is {used}
 
 𝗗𝗨𝗠𝗕 - 𝗟⚡️𝗘𝗖𝗛 
-Developer Jackssmit
+Developer Jackssmit 
 """
     return stats
 dispatcher.add_handler(
