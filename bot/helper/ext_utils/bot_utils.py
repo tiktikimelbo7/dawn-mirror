@@ -29,28 +29,28 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
-    STATUS_CLONING = "Cloning...♻️"
-    STATUS_WAITING = "Queued...💤"
-    STATUS_FAILED = "Failed 🚫. Cleaning Download..."
-    STATUS_PAUSE = "Paused...⛔️"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
-    STATUS_SPLITTING = "Splitting...✂️"
-    STATUS_CHECKING = "CheckingUp...📝"
-    STATUS_SEEDING = "Seeding...🌧"
+    STATUS_UPLOADING = " 𝗙𝗶𝗹𝗲 𝗜𝘀 𝗦𝗲𝗻𝗱𝗶𝗻𝗴 𝗧𝗼 𝗬𝗼𝘂"
+    STATUS_DOWNLOADING = " 𝗙𝗶𝗹𝗲 𝗜𝘀 𝗦𝗲𝗻𝗱𝗶𝗻𝗴 𝗧𝗼 𝗦𝗲𝗿𝘃𝗲𝗿"
+    STATUS_CLONING = " 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗶𝗻𝗴 𝗖𝗹𝗼𝗻𝗲 𝗙𝗜𝗹𝗲"
+    STATUS_WAITING = " 𝗤𝘂𝗲𝘂𝗲𝗱"
+    STATUS_FAILED = " 𝗢𝗼𝗽𝘀 𝗙𝗮𝗶𝗹𝗲𝗱 . 𝗖𝗹𝗲𝗮𝗻𝗶𝗻𝗴 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱"
+    STATUS_PAUSE = " 𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴 𝗣𝗮𝘂𝘀𝗲𝗱"
+    STATUS_ARCHIVING = "𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗶𝗻𝗴 𝘇𝗶𝗽 𝗙𝗶𝗹𝗲"
+    STATUS_EXTRACTING = " 𝗙𝗶𝗹𝗲 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗶𝗻𝗴"
+    STATUS_SPLITTING = "𝗙𝗶𝗹𝗲 𝗦𝗽𝗹𝗶𝘁𝘁𝗶𝗻𝗴"
+    STATUS_CHECKING = " 𝗙𝗜𝗹𝗲 𝗦𝗲𝗮𝗿𝗰𝗵𝗶𝗻𝗴"
+    STATUS_SEEDING = " 𝗙𝗶𝗹𝗲 𝗦𝗲𝗲𝗱𝗶𝗻𝗴"
     
 class EngineStatus:
-    STATUS_ARIA = "Aria2c v1.35.0"
-    STATUS_GD = "Google Api v2.51.0"
-    STATUS_MEGA = "MegaSDK v3.12.0"
-    STATUS_QB = "qBittorrent v4.3.9"
-    STATUS_TG = "Pyrogram v2.0.27"
-    STATUS_YT = "YT-dlp v22.5.18"
+    STATUS_ARIA = "Based on Aria2c Engine"
+    STATUS_GD = "Based on Google Api Engine"
+    STATUS_MEGA = "Based on MegaSDK Engine"
+    STATUS_QB = "Based on qBittorrent Engine"
+    STATUS_TG = "Based on Pyrogram Engine"
+    STATUS_YT = "Based on YT-dlp Engine"
     STATUS_EXT = "Extract | pExtract"
-    STATUS_SPLIT = "FFmpeg v2.9.1"
-    STATUS_ZIP = "p7zip v16.02"
+    STATUS_SPLIT = "Based on FFmpeg Engine"
+    STATUS_ZIP = "Based on p7zip Engine"
 
 PROGRESS_MAX_SIZE = 100 // 9
 PROGRESS_INCOMPLETE = ['◔', '◔', '◑', '◑', '◑', '◕', '◕']
@@ -147,8 +147,8 @@ def get_readable_message():
                 globals()['COUNT'] -= STATUS_LIMIT
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
-            msg += f"\n\n<b>File Name:</b> <code>{escape(str(download.name()))}</code>"
-            msg += f"\n<b>Status:</b> <i>{download.status()}</i>"
+            msg += f"\n\n<b>File </b> <code>{escape(str(download.name()))}</code>"
+            msg += f"\n<b>Status </b> <i>{download.status()}</i>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
                 MirrorStatus.STATUS_EXTRACTING,
@@ -164,8 +164,8 @@ def get_readable_message():
                     msg += f"\n<b>Downloaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 msg += f"\n<b>Speed:</b> {download.speed()}\n<b>Waiting Time:</b> {download.eta()}"
                 msg += f"\n<b>Elapsed : </b>{get_readable_time(time() - download.message.date.timestamp())}"
-                msg += f'\n<b>Req By :</b> <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a>'
-                msg += f"\n<b>Engine :</b> {download.eng()}"
+                msg += f'\n<b>Request :</b> <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a>'
+                msg += f"\n<b>Worker :</b> {download.eng()}"
                 try:
                     msg += f"\n<b>Seeders:</b> {download.aria_download().num_seeders}" \
                            f" | <b>Peers:</b> {download.aria_download().connections}"
@@ -179,22 +179,22 @@ def get_readable_message():
                 msg += f"\n<b>To Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
 
             elif download.status() == MirrorStatus.STATUS_SEEDING:
-                msg += f"\n<b>Size: </b>{download.size()}"
-                msg += f"\n<b>Engine:</b> <code>qBittorrent v4.4.2</code>"
-                msg += f"\n<b>Speed: </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
-                msg += f" | <b>Uploaded: </b>{get_readable_file_size(download.torrent_info().uploaded)}"
-                msg += f"\n<b>Ratio: </b>{round(download.torrent_info().ratio, 3)}"
-                msg += f" | <b>Time: </b>{get_readable_time(download.torrent_info().seeding_time)}"
+                msg += f"\n<b>Size </b>{download.size()}"
+                msg += f"\n<b>Worker </b> <code>qBittorrent Engine</code>"
+                msg += f"\n<b>Speed </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
+                msg += f" | <b>Uploaded </b>{get_readable_file_size(download.torrent_info().uploaded)}"
+                msg += f"\n<b>Ratio </b>{round(download.torrent_info().ratio, 3)}"
+                msg += f" | <b>Time </b>{get_readable_time(download.torrent_info().seeding_time)}"
                 msg += f"\n<b>To Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             else:
-                msg += f"\n<b>Size: </b>{download.size()}"
-                msg += f"\n<b>Engine :</b> {download.eng()}"
+                msg += f"\n<b>Size </b>{download.size()}"
+                msg += f"\n<b>Worker </b> {download.eng()}"
                 msg += "\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        bmsg = f"\n<b>_____________________________________</b>"
-        bmsg += f"\n<b>Disk:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
-        bmsg += f"<b> | UPTM:</b> {get_readable_time(time() - botStartTime)}"
+        bmsg = f"\n<b>  </b>"
+        bmsg += f"\n<b>Disk </b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
+        bmsg += f"<b> - UPTM </b> {get_readable_time(time() - botStartTime)}"
         dlspeed_bytes = 0
         upspeed_bytes = 0
         for download in list(download_dict.values()):
@@ -209,18 +209,18 @@ def get_readable_message():
                     upspeed_bytes += float(spd.split('K')[0]) * 1024
                 elif 'MB/s' in spd:
                     upspeed_bytes += float(spd.split('M')[0]) * 1048576
-        bmsg += f"\n<b>DN:</b> {get_readable_file_size(dlspeed_bytes)}/s<b> | UP:</b> {get_readable_file_size(upspeed_bytes)}/s"
+        bmsg += f"\n<b>DN </b> {get_readable_file_size(dlspeed_bytes)}/s<b> - UP </b> {get_readable_file_size(upspeed_bytes)}/s"
         
         buttons = ButtonMaker()
-        buttons.sbutton("Statistics", str(THREE))
+        buttons.sbutton("Bot - Performance", str(THREE))
         sbutton = InlineKeyboardMarkup(buttons.build_menu(1))
         
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
-            msg += f"<b>Tasks:</b> {tasks}\n"
+            msg += f"<b>Tasks </b> {tasks}\n"
             buttons = ButtonMaker()
-            buttons.sbutton("Prev", "status pre")
+            buttons.sbutton("←", "status pre")
             buttons.sbutton(f"{PAGE_NO}/{pages}", str(THREE))
-            buttons.sbutton("Next", "status nex")
+            buttons.sbutton("→", "status nex")
             button = InlineKeyboardMarkup(buttons.build_menu(3))
             return msg + bmsg, button
         return msg + bmsg, sbutton
@@ -375,12 +375,13 @@ def bot_sys_stats():
     stats += f"""
 
 Bot Uptime: {currentTime}
-T-DN: {recv} | T-UP: {sent}
-CPU: {cpu}% | RAM: {mem}%
-Disk: {total} | Free: {free}
-Used: [{disk}%] is {used}
+TDN  {recv} - TUP  {sent}
+CPU  {cpu}% - RAM  {mem}%
+Disk  {total} - Left {free}
+Used  [{disk}%] is {used}
 
-Made with ❤️ by Dawn
+𝗗𝗨𝗠𝗕 - 𝗟⚡️𝗘𝗖𝗛 
+Developer Jackssmit
 """
     return stats
 dispatcher.add_handler(
