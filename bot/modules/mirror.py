@@ -192,7 +192,7 @@ class MirrorListener:
         else:
             update_all_messages()
 
-        if not self.isPrivate and INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
+        if not self.isPrivate and INCOMPLETE_TASK_NOTIFIER and DB_URI is not None 
             DbManger().rm_complete_task(self.message.link)
 
     def onUploadComplete(self, link: str, size, files, folders, typ, name: str):
@@ -209,9 +209,9 @@ class MirrorListener:
             msg += f'\n<b>Total Files: </b>{folders}'
             if typ != 0:
                 msg += f'\n<b>Files Corrupted: </b>{typ}'
-            msg += f'\n\n<b> </b>{self.tag} <b> Every moment is a fresh beginning </b>'
+            msg += f'\n\n<b> </b>{self.tag} <b> </b>'
             msg += f'\n<b>It Tooks:</b> {get_readable_time(time() - self.message.date.timestamp())}'
-            msg += f'\n\n<b> File Saved In Dumb Files </b>'
+            msg += f'\n\n<b> Every moment is a fresh beginning </b>'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
@@ -229,9 +229,9 @@ class MirrorListener:
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
                 msg += f'\n<b>SubFolders: </b>{folders}'
                 msg += f'\n<b>Files: </b>{files}'
-            msg += f'\n\n<b> </b>{self.tag} <b> Every moment is a fresh beginning </b>'
+            msg += f'\n\n<b> </b>{self.tag} <b> </b>'
             msg += f'\n<b>It Tooks:</b> {get_readable_time(time() - self.message.date.timestamp())}'
-            msg += f'\n\n<b> File Saved In Dumb Files </b>'
+            msg += f'\n\n<b> Every moment is a fresh beginning </b>'
             buttons = ButtonMaker()
             link = short_url(link)
             buttons.buildbutton("Google", link)
