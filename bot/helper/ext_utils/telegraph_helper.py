@@ -72,7 +72,7 @@ class TelegraphHelper:
                     nxt_page += 1
             self.edit_page(
                 path = path[prev_page],
-                title = 'Z-Mirror-Bot Torrent Search',
+                title = 'Developer Jackssmit',
                 content=content
             )
         return
