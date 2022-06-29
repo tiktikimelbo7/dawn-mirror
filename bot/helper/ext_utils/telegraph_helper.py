@@ -72,7 +72,7 @@ class TelegraphHelper:
                     nxt_page += 1
             self.edit_page(
                 path = path[prev_page],
-                title = 'Developer Jackssmit',
+                title = '𝗗𝗨𝗠𝗕 - 𝗟⚡️𝗘𝗖𝗛',
                 content=content
             )
         return
