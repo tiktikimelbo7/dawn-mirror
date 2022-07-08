@@ -60,10 +60,10 @@ def _clone(message, bot, multi=0):
         if res != "":
             return sendMessage(res, bot, message)
         if STOP_DUPLICATE:
-            LOGGER.info('Dude Checking File/Folder if already in Drive')
+            LOGGER.info('⚡️DUDE Checking File/Folder if already in Drive')
             smsg, button = gd.drive_list(name, True, True)
             if smsg:
-                msg3 = "Dude Someone already mirrored it for you !\nHere you go:"
+                msg3 = "⚡️DUDE Someone already mirrored it for you !\nHere you go:"
                 return sendMarkup(msg3, bot, message, button)
         if CLONE_LIMIT is not None:
             LOGGER.info('Checking File/Folder Size...')
