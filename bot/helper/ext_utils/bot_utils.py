@@ -53,7 +53,7 @@ class EngineStatus:
     STATUS_ZIP = "Based on p7zip Engine"
 
 PROGRESS_MAX_SIZE = 100 // 9
-PROGRESS_INCOMPLETE = ['◔', '◔', '◑', '◑', '◑', '◕', '◕']
+PROGRESS_INCOMPLETE = ['⚡️', '◔', '◑', '◑', '◑', '◕', '◕']
     
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
