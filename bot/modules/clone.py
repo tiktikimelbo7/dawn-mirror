@@ -111,7 +111,7 @@ def _clone(message, bot, multi=0):
         if (is_gdtot or is_unified or is_udrive or is_sharer):
             gd.deletefile(link)
     else:
-        sendMessage('Send Gdrive or GDToT/AppDrive/DriveApp/GDFlix/DriveBit/DriveLinks/DrivePro/DriveAce/DriveSharer/HubDrive/DriveHub/KatDrive/Kolop/DriveFire/SharerPw link along with command or by replying to the link by command', bot, message)
+        sendMessage('⚡️DUDE Send Google Drive Links - Go TOT Links - AppDrive Links And Replay With CMD Clone By Bot Number Man', bot, message)
 
 @new_thread
 def cloneNode(update, context):
