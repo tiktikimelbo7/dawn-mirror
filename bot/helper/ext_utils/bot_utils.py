@@ -210,11 +210,11 @@ def get_readable_message():
                 elif 'MB/s' in spd:
                     upspeed_bytes += float(spd.split('M')[0]) * 1048576
         bmsg += f"\n<b>DN </b> {get_readable_file_size(dlspeed_bytes)}/s<b> - UP </b> {get_readable_file_size(upspeed_bytes)}/s"
-        
+
         buttons = ButtonMaker()
         buttons.sbutton("Bot - Performance", str(THREE))
         sbutton = InlineKeyboardMarkup(buttons.build_menu(1))
-        
+
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
             msg += f"<b>Tasks </b> {tasks}\n"
             buttons = ButtonMaker()
@@ -279,9 +279,9 @@ def is_gdtot_link(url: str):
 def is_unified_link(url: str):
     url1 = re_match(r'https?://(anidrive|driveroot|driveflix|indidrive|drivehub)\.in/\S+', url)
     url = re_match(r'https?://(appdrive|driveapp|driveace|gdflix|drivelinks|drivebit|drivesharer|drivepro)\.\S+', url)
-    if bool(url1) == True:
+    if bool(url1):
         return bool(url1)
-    elif bool(url) == True:
+    elif bool(url):
         return bool(url)
     else:
         return False
@@ -289,9 +289,8 @@ def is_unified_link(url: str):
 def is_udrive_link(url: str):
     if 'drivehub.ws' in url:
         return 'drivehub.ws' in url
-    else:
-        url = re_match(r'https?://(hubdrive|katdrive|kolop|drivefire|drivebuzz)\.\S+', url)
-        return bool(url)
+    url = re_match(r'https?://(hubdrive|katdrive|kolop|drivefire|drivebuzz)\.\S+', url)
+    return bool(url)
 
 def is_sharer_link(url: str):
     url = re_match(r'https?://(sharer)\.pw/\S+', url)
@@ -371,7 +370,7 @@ def bot_sys_stats():
                 num_extract += 1
        if stats.status() == MirrorStatus.STATUS_SPLITTING:
                 num_split += 1
-    stats = f"Bot - Performance"
+    stats = "Bot - Performance"
     stats += f"""
 
 Bot Uptime: {currentTime}
@@ -385,5 +384,5 @@ Developer Jackssmit
 """
     return stats
 dispatcher.add_handler(
-    CallbackQueryHandler(pop_up_stats, pattern="^" + str(THREE) + "$")
+    CallbackQueryHandler(pop_up_stats, pattern=f"^{str(THREE)}$")
 )
