@@ -42,14 +42,14 @@ class MirrorStatus:
     STATUS_SEEDING = " 𝗙𝗶𝗹𝗲 𝗦𝗲𝗲𝗱𝗶𝗻𝗴"
     
 class EngineStatus:
-    STATUS_ARIA = "Based on Aria2c Engine"
-    STATUS_GD = "Based on Google Api Engine"
-    STATUS_MEGA = "Based on MegaSDK Engine"
-    STATUS_QB = "Based on qBittorrent Engine"
-    STATUS_TG = "Based on Pyrogram Engine"
-    STATUS_YT = "Based on YT-dlp Engine"
+    STATUS_ARIA = "Based on torrent Engine"
+    STATUS_GD = "Based on Google Engine"
+    STATUS_MEGA = "Based on Mega Engine"
+    STATUS_QB = "Based on Qbit Engine"
+    STATUS_TG = "Based on Cloudflare Engine"
+    STATUS_YT = "Based on YoutubeApi Engine"
     STATUS_EXT = "Extract | pExtract"
-    STATUS_SPLIT = "Based on FFmpeg Engine"
+    STATUS_SPLIT = "Based on RAR Engine"
     STATUS_ZIP = "Based on p7zip Engine"
 
 PROGRESS_MAX_SIZE = 100 // 9
@@ -371,7 +371,7 @@ def bot_sys_stats():
                 num_extract += 1
        if stats.status() == MirrorStatus.STATUS_SPLITTING:
                 num_split += 1
-    stats = f"Bot Statistics"
+    stats = f"Bot - Performance"
     stats += f"""
 
 Bot Uptime: {currentTime}
