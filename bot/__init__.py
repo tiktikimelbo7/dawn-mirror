@@ -153,19 +153,19 @@ except:
     pass
 try:
     fx = getConfig('EXTENSION_FILTER')
-except:	
-    pass	
-try:	
-    aid = getConfig('LEECH_LOG')	
-    aid = aid.split(' ')	
-    for _id in aid:	
-        LEECH_LOG.add(int(_id))	
-except:	
-    pass	
-try:	
-    aid = getConfig('MIRROR_LOGS')	
-    aid = aid.split(' ')	
-    for _id in aid:	
+except:
+    pass
+try:
+    aid = getConfig('LEECH_LOG')
+    aid = aid.split(' ')
+    for _id in aid:
+        LEECH_LOG.add(int(_id))
+except:
+    pass
+try:
+    aid = getConfig('MIRROR_LOGS')
+    aid = aid.split(' ')
+    for _id in aid:
         MIRROR_LOGS.add(int(_id))
     if len(fx) > 0:
         fx = fx.split()
@@ -453,51 +453,38 @@ try:
 except:
     CRYPT = None
 try:
-    UNIFIED_EMAIL = getConfig('UNIFIED_EMAIL')
-    if len(UNIFIED_EMAIL) == 0:
+    APPDRIVE_EMAIL = getConfig('APPDRIVE_EMAIL')
+    APPDRIVE_PASS = getConfig('APPDRIVE_PASS')
+    if len(APPDRIVE_EMAIL) == 0 or len(APPDRIVE_PASS) == 0:
         raise KeyError
-except:
-    UNIFIED_EMAIL = None
+except KeyError:
+    APPDRIVE_EMAIL = None
+    APPDRIVE_PASS = None
 try:
-    UNIFIED_PASS = getConfig('UNIFIED_PASS')
-    if len(UNIFIED_PASS) == 0:
-        raise KeyError
+    FSUB = getConfig('FSUB')
+    FSUB = FSUB.lower() == 'true'
 except:
-    UNIFIED_PASS = None
+    FSUB = False
+    LOGGER.info("Force Subscribe is disabled")
 try:
-    HUBDRIVE_CRYPT = getConfig('HUBDRIVE_CRYPT')
-    if len(HUBDRIVE_CRYPT) == 0:
+    CHANNEL_USERNAME = getConfig("CHANNEL_USERNAME")
+    if len(CHANNEL_USERNAME) == 0:
         raise KeyError
-except:
-    HUBDRIVE_CRYPT = None
+except KeyError:
+    log_info("CHANNEL_USERNAME not provided! Using default @dumbleech")
+    CHANNEL_USERNAME = "dumbleech"
 try:
-    KATDRIVE_CRYPT = getConfig('KATDRIVE_CRYPT')
-    if len(KATDRIVE_CRYPT) == 0:
+    FSUB_CHANNEL_ID = getConfig("FSUB_CHANNEL_ID")
+    if len(FSUB_CHANNEL_ID) == 0:
         raise KeyError
-except:
-    KATDRIVE_CRYPT = None
+    FSUB_CHANNEL_ID = int(FSUB_CHANNEL_ID)
+except KeyError:
+    log_info("CHANNEL_ID not provided! Using default id of @Dumbleech")
+    FSUB_CHANNEL_ID = -1663311419
 try:
-    DRIVEFIRE_CRYPT = getConfig('DRIVEFIRE_CRYPT')
-    if len(DRIVEFIRE_CRYPT) == 0:
-        raise KeyError
-except:
-    DRIVEFIRE_CRYPT = None
-try:
-    XSRF_TOKEN = getConfig('XSRF_TOKEN')
-    if len(XSRF_TOKEN) == 0:
-        raise KeyError
-except:
-    XSRF_TOKEN = None
-try:
-    laravel_session = getConfig('laravel_session')
-    if len(laravel_session) == 0:
-        raise KeyError
-except:
-    laravel_session = None
-try:	
-    BOT_PM = getConfig('BOT_PM')	
-    BOT_PM = BOT_PM.lower() == 'true'	
-except KeyError:	
+    BOT_PM = getConfig('BOT_PM')
+    BOT_PM = BOT_PM.lower() == 'true'
+except KeyError:
     BOT_PM = False
 try:
     TOKEN_PICKLE_URL = getConfig('TOKEN_PICKLE_URL')
@@ -509,7 +496,7 @@ try:
             with open('token.pickle', 'wb+') as f:
                 f.write(res.content)
         else:
-            log_error(f"Failed to download token.pickle, link got HTTP response: {res.status_code}")
+            log_error(f"⚡️DUDE Failed to download token.pickle, link got HTTP response: {res.status_code}")
     except Exception as e:
         log_error(f"TOKEN_PICKLE_URL: {e}")
 except:
@@ -524,7 +511,7 @@ try:
             with open('accounts.zip', 'wb+') as f:
                 f.write(res.content)
         else:
-            log_error(f"Failed to download accounts.zip, link got HTTP response: {res.status_code}")
+            log_error(f"⚡️DUDE ⚡️DUDEFailed to download accounts.zip, link got HTTP response: {res.status_code}")
     except Exception as e:
         log_error(f"ACCOUNTS_ZIP_URL: {e}")
         raise KeyError
@@ -558,7 +545,7 @@ try:
             with open('cookies.txt', 'wb+') as f:
                 f.write(res.content)
         else:
-            log_error(f"Failed to download cookies.txt, link got HTTP response: {res.status_code}")
+            log_error(f"⚡️DUDE Failed to download cookies.txt, link got HTTP response: {res.status_code}")
     except Exception as e:
         log_error(f"YT_COOKIES_URL: {e}")
 except:
