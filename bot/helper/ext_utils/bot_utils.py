@@ -49,7 +49,7 @@ class EngineStatus:
     STATUS_TG = "Based on Cloudflare Engine"
     STATUS_YT = "Based on YoutubeApi Engine"
     STATUS_EXT = "Extract | pExtract"
-    STATUS_SPLIT = "Based on RAR Engine"
+    STATUS_SPLIT = "Based on Rar Engine"
     STATUS_ZIP = "Based on p7zip Engine"
 
 PROGRESS_MAX_SIZE = 100 // 9
