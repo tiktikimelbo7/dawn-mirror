@@ -407,7 +407,7 @@ def gen_payload(data, boundary=f'{"-"*6}_'):
     data_string += f'{boundary}--\r\n'
     return data_string
 
-def parse_infou(data):
+def parse_info(data):
     info = re_findall('>(.*?)<\/li>', data)
     info_parsed = {}
     for item in info:
