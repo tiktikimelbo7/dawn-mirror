@@ -1,4 +1,4 @@
-FROM 412314/mltb:heroku
+FROM mirrorultroid6/seeder2:heroku
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
